@@ -6,8 +6,8 @@ JOIN orders B ON A.customerNumber = B.customerNumber
 JOIN orderdetails C ON B.orderNumber = C.orderNumber
 JOIN products D ON C.productCode = D.productCode  
 )
-SELECT customerName, productLine
-FROM First_Query
+SELECT distinct customerName
+FROM First_Query WHERE productLine <> 'Vintage Cars';
 
 -- How many variations of the product category
 -- SELECT count(distinct productCode), productLine FROM products GROUP BY productLine;
