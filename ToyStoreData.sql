@@ -1,4 +1,3 @@
-SELECT A.orderNumber, B.customerNumber FROM orderdetails A
-INNER JOIN orders B ON A.orderNumber = B.orderNumber;
+-- Identify customers on file that did not order a a vintage car
 
-
+SELECT * FROM customers
