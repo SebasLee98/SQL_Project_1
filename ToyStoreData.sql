@@ -11,4 +11,6 @@ FROM First_Query GROUP BY customerName ORDER BY Number_of_orders_made DESC;
 -- Most popular products ranked
 SELECT B.productName, A.quantityOrdered FROM orderdetails A
 LEFT JOIN products B ON A.productCode = B.productCode
-ORDER BY quantityOrdered DESC LIMIT 15
+ORDER BY quantityOrdered DESC LIMIT 15;
+
+
