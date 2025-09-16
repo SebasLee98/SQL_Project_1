@@ -13,4 +13,11 @@ SELECT B.productName, A.quantityOrdered FROM orderdetails A
 LEFT JOIN products B ON A.productCode = B.productCode
 ORDER BY quantityOrdered DESC LIMIT 15;
 
-
+-- The most popular product in each country
+WITH Set_Up AS (
+SELECT ROW_NUMBER() OVER (PARTITION BY D.country ORDER BY B.quantityOrdered DESC) AS First_Step, D.country, A.productName, B.quantityOrdered FROM products A 
+RIGHT JOIN orderdetails B ON A.productCode = B.productCode
+RIGHT JOIN orders C ON B.orderNumber = C.orderNumber
+LEFT JOIN customers D ON C.customerNumber = D.customerNumber
+)
+SELECT * FROM Set_Up WHERE First_Step = 1
